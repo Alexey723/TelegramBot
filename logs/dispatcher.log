@@ -1,0 +1,30 @@
+2024-03-17 12:37:11 DEBUG TelegramBot:40 - Testing System
+2024-03-17 12:39:22 DEBUG TelegramBot:40 - 
+2024-03-17 12:39:22 DEBUG TelegramBot:41 - Test123
+2024-03-17 12:43:10 DEBUG TelegramBot:40 - Hello world
+2024-03-17 12:52:59 DEBUG TelegramBot:50 - hi
+2024-03-17 12:53:49 DEBUG TelegramBot:50 - /start
+2024-03-17 13:00:07 DEBUG TelegramBot:49 - Привет!
+2024-03-17 13:00:14 DEBUG TelegramBot:49 - картинки
+2024-03-17 13:00:20 DEBUG TelegramBot:49 - Картинки
+2024-03-17 13:00:52 DEBUG TelegramBot:49 - Есть ли жизнь на Марсе?
+2024-03-17 13:01:01 DEBUG TelegramBot:49 - Картинки
+2024-03-17 13:01:14 DEBUG TelegramBot:49 - Мути
+2024-03-17 14:56:04 DEBUG UpdateProducerImpl:13 - Test
+2024-03-17 14:56:04 DEBUG UpdateProducerImpl:13 - Test
+2024-03-17 14:56:17 DEBUG UpdateProducerImpl:13 - /stop
+2024-03-17 14:56:25 DEBUG UpdateProducerImpl:13 - /stop
+2024-03-17 14:57:57 DEBUG UpdateProducerImpl:13 - /start
+2024-03-17 14:59:22 DEBUG UpdateProducerImpl:13 - Hi
+2024-03-17 15:02:47 DEBUG UpdateProducerImpl:13 - Кто тут?
+2024-03-17 15:06:17 DEBUG UpdateProducerImpl:13 - Кто тут?
+2024-03-17 15:06:20 DEBUG UpdateProducerImpl:13 - Hi
+2024-03-17 15:06:40 ERROR UpdateController:46 - Unsupported message type is received: Update(updateId=706332985, message=null, inlineQuery=null, chosenInlineQuery=null, callbackQuery=null, editedMessage=Message(messageId=38, messageThreadId=null, from=User(id=5173993426, firstName=Alex, isBot=false, lastName=null, userName=alex_smaglyuk, languageCode=ru, canJoinGroups=null, canReadAllGroupMessages=null, supportInlineQueries=null, isPremium=null, addedToAttachmentMenu=null), date=1710677157, chat=Chat(id=5173993426, type=private, title=null, firstName=Alex, lastName=null, userName=alex_smaglyuk, photo=null, description=null, inviteLink=null, pinnedMessage=null, stickerSetName=null, canSetStickerSet=null, permissions=null, slowModeDelay=null, bio=null, linkedChatId=null, location=null, messageAutoDeleteTime=null, hasPrivateForwards=null, HasProtectedContent=null, joinToSendMessages=null, joinByRequest=null, hasRestrictedVoiceAndVideoMessages=null, isForum=null, activeUsernames=null, emojiStatusCustomEmojiId=null, hasAggressiveAntiSpamEnabled=null, hasHiddenMembers=null), forwardFrom=null, forwardFromChat=null, forwardDate=null, text=Hi2, entities=null, captionEntities=null, audio=null, document=null, photo=null, sticker=null, video=null, contact=null, location=null, venue=null, animation=null, pinnedMessage=null, newChatMembers=[], leftChatMember=null, newChatTitle=null, newChatPhoto=null, deleteChatPhoto=null, groupchatCreated=null, replyToMessage=null, voice=null, caption=null, superGroupCreated=null, channelChatCreated=null, migrateToChatId=null, migrateFromChatId=null, editDate=1710677194, game=null, forwardFromMessageId=null, invoice=null, successfulPayment=null, videoNote=null, authorSignature=null, forwardSignature=null, mediaGroupId=null, connectedWebsite=null, passportData=null, forwardSenderName=null, poll=null, replyMarkup=null, dice=null, viaBot=null, senderChat=null, proximityAlertTriggered=null, messageAutoDeleteTimerChanged=null, isAutomaticForward=null, hasProtectedContent=null, webAppData=null, videoChatStarted=null, videoChatEnded=null, videoChatParticipantsInvited=null, videoChatScheduled=null, isTopicMessage=null, forumTopicCreated=null, forumTopicClosed=null, forumTopicReopened=null, forumTopicEdited=null, generalForumTopicHidden=null, generalForumTopicUnhidden=null, writeAccessAllowed=null, hasMediaSpoiler=null, userShared=null, chatShared=null), channelPost=null, editedChannelPost=null, shippingQuery=null, preCheckoutQuery=null, poll=null, pollAnswer=null, myChatMember=null, chatMember=null, chatJoinRequest=null)
+2024-03-17 15:07:47 DEBUG UpdateProducerImpl:13 - 
+2024-03-17 15:08:20 DEBUG UpdateProducerImpl:13 - 
+2024-03-17 15:08:51 DEBUG UpdateProducerImpl:13 - 
+2024-03-18 13:01:00 DEBUG UpdateProducerImpl:21 - /start
+2024-03-18 13:01:12 DEBUG UpdateProducerImpl:21 - Привет!
+2024-03-18 15:36:01 DEBUG UpdateProducerImpl:21 - Hello from chat
+2024-03-18 15:38:51 DEBUG UpdateProducerImpl:21 - Hello from chat
+2024-03-19 23:59:11 DEBUG UpdateProducerImpl:21 - Привет из чата
