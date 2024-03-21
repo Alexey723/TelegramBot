@@ -4,7 +4,7 @@ import org.apache.logging.log4j.message.Message;
 import ru.conditer.entity.AppDocument;
 
 public interface FileService {
-    AppDocument processDoc(Message telegramMessage);
+    AppDocument processDoc(Message externalMessage);
 
     //AppPhoto processPhoto(Message telegramMessage);
 
