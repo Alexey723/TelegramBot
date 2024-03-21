@@ -2,11 +2,9 @@ package ru.conditer.services;
 
 import org.apache.logging.log4j.message.Message;
 import ru.conditer.entity.AppDocument;
+import ru.conditer.entity.AppPhoto;
 
 public interface FileService {
-    AppDocument processDoc(Message externalMessage);
-
-    //AppPhoto processPhoto(Message telegramMessage);
-
-    //String generateLink(Long docId, LinkType linkType);
+    AppDocument processDoc(Message telegramMessage);
+    AppPhoto processPhoto(Message telegramMessage);
 }
