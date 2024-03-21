@@ -7,9 +7,13 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.User;
 import ru.conditer.dao.AppUserDAO;
 import ru.conditer.dao.RawDataDao;
+import ru.conditer.entity.AppDocument;
+import ru.conditer.entity.AppPhoto;
 import ru.conditer.entity.AppUser;
 import ru.conditer.entity.RawData;
 import ru.conditer.entity.enums.UserState;
+import ru.conditer.exceptions.UploadFileException;
+import ru.conditer.services.FileService;
 import ru.conditer.services.MainService;
 import ru.conditer.services.ProducerService;
 import ru.conditer.services.enums.ServiceCommand;
@@ -18,17 +22,21 @@ import static ru.conditer.entity.enums.UserState.BASIC_STATE;
 import static ru.conditer.entity.enums.UserState.WAIT_FOR_EMAIL_STATE;
 import static ru.conditer.services.enums.ServiceCommand.*;
 
-@Service
+
 @Log4j
+@Service
 public class MainServiceImpl implements MainService {
     private final RawDataDao rawDataDao;
     private final ProducerService producerService;
     private final AppUserDAO appUserDAO;
+    private final FileService fileService;
 
-    public MainServiceImpl(RawDataDao rawDataDao, ProducerService producerService, AppUserDAO appUserDAO) {
+    public MainServiceImpl(RawDataDao rawDataDao, ProducerService producerService, AppUserDAO appUserDAO,
+		    FileService fileService) {
         this.rawDataDao = rawDataDao;
         this.producerService = producerService;
         this.appUserDAO = appUserDAO;
+        this.fileService = fileService;
     }
 
     @Override
@@ -39,7 +47,10 @@ public class MainServiceImpl implements MainService {
         var text = update.getMessage().getText();
         var output = "";
 
-        if (CANCEL.equals(text)) {
+//      if (CANCEL.equals(text)) {
+        
+        var serviceCommand = ServiceCommand.fromValue(text);
+    	if (CANCEL.equals(serviceCommand)) {
             output = cancelProcess(appUser);
         } else if (BASIC_STATE.equals(userState)) {
             output = processServiceCommand(appUser, text);
@@ -62,9 +73,23 @@ public class MainServiceImpl implements MainService {
         if (isNotAllowToSendContent(chatId, appUser)){
             return;
         }
-        //TODO добавить сохранения документа.
+      
+    /*    //TODO добавить сохранения документа.
         var answer = "Документ успешно загружен: http://test.ru/get-doc/777";
-        sendAnswer(answer, chatId);
+        sendAnswer(answer, chatId);  */
+
+        try {
+	    AppDocument doc = fileService.processDoc(update.getMessage());
+	    //TODO Добавить генерацию ссылки для скачивания документа
+	    var answer = "Документ успешно загружен! "
+			    + "Ссылка для скачивания: http://test.ru/get-doc/777";
+	    sendAnswer(answer, chatId);
+	} catch (UploadFileException ex) {
+	    log.error(ex);
+	    String error = "К сожалению, загрузка файла не удалась. Повторите попытку позже.";
+	    sendAnswer(error, chatId);
+	}
+        
     }
 
     @Override
@@ -75,15 +100,30 @@ public class MainServiceImpl implements MainService {
         if (isNotAllowToSendContent(chatId, appUser)){
             return;
         }
-        //TODO добавить сохранения фото.
+      /*  //TODO добавить сохранения фото.
         var answer = "Фото успешно загружено: http://test.ru/get-photo/777";
-        sendAnswer(answer, chatId);
+        sendAnswer(answer, chatId); */
+
+        try {
+	    AppPhoto photo = fileService.processPhoto(update.getMessage());
+	    //TODO добавить генерацию ссылки для скачивания фото
+	    var answer = "Фото успешно загружено! "
+			    + "Ссылка для скачивания: http://test.ru/get-photo/777";
+	    sendAnswer(answer, chatId);
+	} catch (UploadFileException ex) {
+	    log.error(ex);
+	    String error = "К сожалению, загрузка фото не удалась. Повторите попытку позже.";
+	    sendAnswer(error, chatId);
+	}
     }
 
     private boolean isNotAllowToSendContent(Long chatId, AppUser appUser) {
         var userState = appUser.getState();
         if(!appUser.getIsActive()){
-            var error = "Зарегистрируйтесь или активируйте свою учетную запись для загрузки контента.";
+       //   var error = "Зарегистрируйтесь или активируйте свою учетную запись для загрузки контента.";
+
+            var error = "Зарегистрируйтесь или активируйте "
+			    + "свою учетную запись для загрузки контента.";
             sendAnswer(error, chatId);
             return true;
         }else if(!BASIC_STATE.equals(userState)){
@@ -105,9 +145,14 @@ public class MainServiceImpl implements MainService {
         if (REGISTRATION.equals(cmd)){
             //TODO добавить регистрацию
             return "Временно недоступно.";
-        }else if (HELP.equals(cmd)){
+     //   }else if (HELP.equals(cmd)){
+
+        } else if (HELP.equals(serviceCommand)) {
             return help();
-        } else if (START.equals(cmd)) {
+    
+  //      } else if (START.equals(cmd)) {
+
+        } else if (START.equals(serviceCommand)) {
             return "Приветствую! Чтобы посмотреть список доступных команд введите /help";
         }else {
             return "Неизвестная команда! Чтобы посмотреть список доступных команд введите /help";
