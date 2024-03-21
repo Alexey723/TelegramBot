@@ -23,7 +23,7 @@ public enum ServiceCommand {
     }
 
 
-.   public static ServiceCommand fromValue(String v) {
+    public static ServiceCommand fromValue(String v) {
         for (ServiceCommand c : ServiceCommand.values()) {
             if (c.value.equals(v)) {
                 return c;
