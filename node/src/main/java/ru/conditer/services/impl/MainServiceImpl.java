@@ -4,18 +4,17 @@ import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.User;
 import ru.conditer.dao.AppUserDAO;
 import ru.conditer.dao.RawDataDao;
 import ru.conditer.entity.AppDocument;
 import ru.conditer.entity.AppPhoto;
 import ru.conditer.entity.AppUser;
 import ru.conditer.entity.RawData;
-import ru.conditer.entity.enums.UserState;
 import ru.conditer.exceptions.UploadFileException;
 import ru.conditer.services.FileService;
 import ru.conditer.services.MainService;
 import ru.conditer.services.ProducerService;
+import ru.conditer.services.enums.LinkType;
 import ru.conditer.services.enums.ServiceCommand;
 
 import static ru.conditer.entity.enums.UserState.BASIC_STATE;
@@ -73,23 +72,17 @@ public class MainServiceImpl implements MainService {
         if (isNotAllowToSendContent(chatId, appUser)){
             return;
         }
-      
-    /*    //TODO добавить сохранения документа.
-        var answer = "Документ успешно загружен: http://test.ru/get-doc/777";
-        sendAnswer(answer, chatId);  */
-
         try {
 	    AppDocument doc = fileService.processDoc(update.getMessage());
-	    //TODO Добавить генерацию ссылки для скачивания документа
+        String link = fileService.generateLink(doc.getId(), LinkType.GET_DOC);
 	    var answer = "Документ успешно загружен! "
-			    + "Ссылка для скачивания: http://test.ru/get-doc/777";
+			    + "Ссылка для скачивания: " + link;
 	    sendAnswer(answer, chatId);
 	} catch (UploadFileException ex) {
 	    log.error(ex);
 	    String error = "К сожалению, загрузка файла не удалась. Повторите попытку позже.";
 	    sendAnswer(error, chatId);
 	}
-        
     }
 
     @Override
@@ -97,24 +90,21 @@ public class MainServiceImpl implements MainService {
         saveRawData(update);
         var appUser = findOrSaveAppUser(update);
         var chatId = update.getMessage().getChatId();
-        if (isNotAllowToSendContent(chatId, appUser)){
+        if (isNotAllowToSendContent(chatId, appUser)) {
             return;
         }
-      /*  //TODO добавить сохранения фото.
-        var answer = "Фото успешно загружено: http://test.ru/get-photo/777";
-        sendAnswer(answer, chatId); */
 
         try {
-	    AppPhoto photo = fileService.processPhoto(update.getMessage());
-	    //TODO добавить генерацию ссылки для скачивания фото
-	    var answer = "Фото успешно загружено! "
-			    + "Ссылка для скачивания: http://test.ru/get-photo/777";
-	    sendAnswer(answer, chatId);
-	} catch (UploadFileException ex) {
-	    log.error(ex);
-	    String error = "К сожалению, загрузка фото не удалась. Повторите попытку позже.";
-	    sendAnswer(error, chatId);
-	}
+            AppPhoto photo = fileService.processPhoto(update.getMessage());
+            String link = fileService.generateLink(photo.getId(), LinkType.GET_PHOTO);
+            var answer = "Фото успешно загружено! "
+                    + "Ссылка для скачивания: " + link;
+            sendAnswer(answer, chatId);
+        } catch (UploadFileException ex) {
+            log.error(ex);
+            String error = "К сожалению, загрузка фото не удалась. Повторите попытку позже.";
+            sendAnswer(error, chatId);
+        }
     }
 
     private boolean isNotAllowToSendContent(Long chatId, AppUser appUser) {
@@ -142,19 +132,15 @@ public class MainServiceImpl implements MainService {
     }
 
     private String processServiceCommand(AppUser appUser, String cmd) {
-        if (REGISTRATION.equals(cmd)){
+        var serviceCommand = ServiceCommand.fromValue(cmd);
+        if (REGISTRATION.equals(serviceCommand)) {
             //TODO добавить регистрацию
             return "Временно недоступно.";
-     //   }else if (HELP.equals(cmd)){
-
         } else if (HELP.equals(serviceCommand)) {
             return help();
-    
-  //      } else if (START.equals(cmd)) {
-
         } else if (START.equals(serviceCommand)) {
             return "Приветствую! Чтобы посмотреть список доступных команд введите /help";
-        }else {
+        } else {
             return "Неизвестная команда! Чтобы посмотреть список доступных команд введите /help";
         }
     }
@@ -180,7 +166,7 @@ public class MainServiceImpl implements MainService {
 
     private AppUser findOrSaveAppUser(Update update){
         var telegramUser = update.getMessage().getFrom();
-        var appUserOpt = appUserDAO.findByTelegramUserId(telegramUser.getId());
+        var appUserOpt = appUserDAO.findAppByTelegramUserId(telegramUser.getId());
         if (appUserOpt.isEmpty()) {
             AppUser transientAppUser = AppUser.builder()
                     .telegramUserId(telegramUser.getId())
