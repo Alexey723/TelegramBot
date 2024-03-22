@@ -11,6 +11,7 @@ import ru.conditer.entity.AppPhoto;
 import ru.conditer.entity.AppUser;
 import ru.conditer.entity.RawData;
 import ru.conditer.exceptions.UploadFileException;
+import ru.conditer.services.AppUserService;
 import ru.conditer.services.FileService;
 import ru.conditer.services.MainService;
 import ru.conditer.services.ProducerService;
@@ -29,13 +30,15 @@ public class MainServiceImpl implements MainService {
     private final ProducerService producerService;
     private final AppUserDAO appUserDAO;
     private final FileService fileService;
+    private final AppUserService appUserService;
 
-    public MainServiceImpl(RawDataDao rawDataDao, ProducerService producerService, AppUserDAO appUserDAO,
-		    FileService fileService) {
+    public MainServiceImpl(RawDataDAO rawDataDAO, ProducerService producerService, AppUserDAO appUserDAO,
+		    FileService fileService, AppUserService appUserService) {
         this.rawDataDao = rawDataDao;
         this.producerService = producerService;
         this.appUserDAO = appUserDAO;
         this.fileService = fileService;
+	this.appUserService = appUserService;
     }
 
     @Override
@@ -44,17 +47,14 @@ public class MainServiceImpl implements MainService {
         var appUser = findOrSaveAppUser(update);
         var userState = appUser.getState();
         var text = update.getMessage().getText();
-        var output = "";
-
-//      if (CANCEL.equals(text)) {
-        
+        var output = "";        
         var serviceCommand = ServiceCommand.fromValue(text);
     	if (CANCEL.equals(serviceCommand)) {
             output = cancelProcess(appUser);
         } else if (BASIC_STATE.equals(userState)) {
             output = processServiceCommand(appUser, text);
         } else if (WAIT_FOR_EMAIL_STATE.equals(userState)) {
-            //TODO добавить обработку email
+            output = appUserService.setEmail(appUser, text);
         } else {
             log.error("Unknown user state: " + userState);
             output = "Неизвестная ошибка! Введите /cancel и попробуйте снова!";
@@ -93,7 +93,6 @@ public class MainServiceImpl implements MainService {
         if (isNotAllowToSendContent(chatId, appUser)) {
             return;
         }
-
         try {
             AppPhoto photo = fileService.processPhoto(update.getMessage());
             String link = fileService.generateLink(photo.getId(), LinkType.GET_PHOTO);
@@ -134,8 +133,7 @@ public class MainServiceImpl implements MainService {
     private String processServiceCommand(AppUser appUser, String cmd) {
         var serviceCommand = ServiceCommand.fromValue(cmd);
         if (REGISTRATION.equals(serviceCommand)) {
-            //TODO добавить регистрацию
-            return "Временно недоступно.";
+            return appUserService.registerUser(appUser);
         } else if (HELP.equals(serviceCommand)) {
             return help();
         } else if (START.equals(serviceCommand)) {
@@ -166,18 +164,18 @@ public class MainServiceImpl implements MainService {
 
     private AppUser findOrSaveAppUser(Update update){
         var telegramUser = update.getMessage().getFrom();
-        var appUserOpt = appUserDAO.findAppByTelegramUserId(telegramUser.getId());
-        if (appUserOpt.isEmpty()) {
+        var optional = appUserDAO.findByTelegramUserId(telegramUser.getId());
+        if (optional.isEmpty()) {
             AppUser transientAppUser = AppUser.builder()
                     .telegramUserId(telegramUser.getId())
                     .username(telegramUser.getUserName())
                     .firstName(telegramUser.getFirstName())
                     .lastName(telegramUser.getLastName())
-                    .isActive(true)
+                    .isActive(false)
                     .state(BASIC_STATE)
                     .build();
             return appUserDAO.save(transientAppUser);
         }
-        return appUserOpt.get();
+        return optional.get();
     }
 }
