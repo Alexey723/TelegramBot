@@ -89,3 +89,97 @@
 2024-03-21 21:13:05 DEBUG UpdateProducerImpl:21 - 
 2024-03-21 22:32:16 DEBUG UpdateProducerImpl:21 - 
 2024-03-21 22:32:58 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:24:31 DEBUG UpdateProducerImpl:21 - Привет!
+2024-03-22 21:24:44 DEBUG UpdateProducerImpl:21 - /help
+2024-03-22 21:25:21 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-22 21:25:51 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:30:23 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:30:28 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:30:37 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:30:42 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:30:47 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:30:52 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:30:57 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:31:08 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:31:13 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:31:18 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:31:23 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:31:28 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:31:33 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:31:38 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:31:42 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:31:46 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:31:51 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:31:55 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:52:15 DEBUG UpdateProducerImpl:21 - test
+2024-03-22 21:52:27 DEBUG UpdateProducerImpl:21 - /help
+2024-03-22 21:52:39 DEBUG UpdateProducerImpl:21 - 
+2024-03-22 21:53:21 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-22 21:53:44 DEBUG UpdateProducerImpl:21 - smaglyuk.alex@mail.ru
+2024-03-22 21:54:50 DEBUG UpdateProducerImpl:21 - /start
+2024-03-22 21:55:03 DEBUG UpdateProducerImpl:21 - /help
+2024-03-22 21:55:06 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-22 21:55:40 DEBUG UpdateProducerImpl:21 - smaglyuk.alex@mail.ru
+2024-03-22 21:56:10 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-23 10:49:01 DEBUG UpdateProducerImpl:21 - /start
+2024-03-23 10:49:04 DEBUG UpdateProducerImpl:21 - /help
+2024-03-23 10:49:06 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-23 10:49:16 DEBUG UpdateProducerImpl:21 - smaglyuk.alex@mail.ru
+2024-03-23 10:49:20 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-23 10:49:25 DEBUG UpdateProducerImpl:21 - smaglyuk.alex@mail.ru
+2024-03-23 10:50:20 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-23 10:54:06 DEBUG UpdateProducerImpl:21 - hi
+2024-03-23 10:54:32 DEBUG UpdateProducerImpl:21 - /help
+2024-03-23 10:54:40 DEBUG UpdateProducerImpl:21 - /cancel
+2024-03-23 10:54:44 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-23 10:54:59 DEBUG UpdateProducerImpl:21 - smaglyuk.alex@mail.ru
+2024-03-23 10:57:27 DEBUG UpdateProducerImpl:21 - /start
+2024-03-23 10:57:38 DEBUG UpdateProducerImpl:21 - /help
+2024-03-23 10:57:48 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-23 10:58:40 DEBUG UpdateProducerImpl:21 - smaglyuk.alex@mail.ru
+2024-03-23 11:01:00 DEBUG UpdateProducerImpl:21 - /help
+2024-03-23 11:01:06 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-23 11:01:12 DEBUG UpdateProducerImpl:21 - smaglyuk.alex@mail.ru
+2024-03-23 11:32:40 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-23 11:32:44 DEBUG UpdateProducerImpl:21 - smaglyuk.alex@mail.ru
+2024-03-24 17:11:23 DEBUG UpdateProducerImpl:21 - /start
+2024-03-24 17:11:38 DEBUG UpdateProducerImpl:21 - /help
+2024-03-24 17:11:52 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-24 17:12:44 DEBUG UpdateProducerImpl:21 - testing
+2024-03-24 17:13:05 DEBUG UpdateProducerImpl:21 - smaglyuk.alex@mail.ru
+2024-03-24 18:58:59 DEBUG UpdateProducerImpl:21 - /start
+2024-03-24 18:59:01 DEBUG UpdateProducerImpl:21 - /help
+2024-03-24 18:59:05 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-24 18:59:20 DEBUG UpdateProducerImpl:21 - smaglyuk.alex@mail.ru
+2024-03-24 19:36:10 DEBUG UpdateProducerImpl:21 - /start
+2024-03-24 19:36:12 DEBUG UpdateProducerImpl:21 - /help
+2024-03-24 19:36:14 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-24 19:36:27 DEBUG UpdateProducerImpl:21 - smaglyuk.alex@mail.ru
+2024-03-24 19:38:46 DEBUG UpdateProducerImpl:21 - /start
+2024-03-24 19:38:48 DEBUG UpdateProducerImpl:21 - /help
+2024-03-24 19:38:49 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-24 19:39:05 DEBUG UpdateProducerImpl:21 - smaglyuk.alex@mail.ru
+2024-03-24 20:14:38 DEBUG UpdateProducerImpl:21 - hi
+2024-03-24 20:14:40 DEBUG UpdateProducerImpl:21 - /help
+2024-03-24 20:14:45 DEBUG UpdateProducerImpl:21 - /test
+2024-03-25 09:52:58 DEBUG UpdateProducerImpl:21 - /help
+2024-03-25 09:53:03 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-25 09:53:10 DEBUG UpdateProducerImpl:21 - /test
+2024-03-25 09:54:53 DEBUG UpdateProducerImpl:21 - /cancel
+2024-03-25 10:00:30 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-25 10:00:33 DEBUG UpdateProducerImpl:21 - /test
+2024-03-25 10:01:41 DEBUG UpdateProducerImpl:21 - /test
+2024-03-25 10:05:23 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-25 10:05:26 DEBUG UpdateProducerImpl:21 - /test
+2024-03-25 10:14:38 DEBUG UpdateProducerImpl:21 - /test
+2024-03-25 10:18:08 DEBUG UpdateProducerImpl:21 - /test
+2024-03-25 10:29:42 DEBUG UpdateProducerImpl:21 - /test
+2024-03-25 10:31:04 DEBUG UpdateProducerImpl:21 - /test
+2024-03-25 10:33:59 DEBUG UpdateProducerImpl:21 - /test
+2024-03-25 10:48:58 DEBUG UpdateProducerImpl:21 - /test
+2024-03-25 11:17:53 DEBUG UpdateProducerImpl:21 - /registration
+2024-03-25 11:50:49 DEBUG UpdateProducerImpl:21 - /test
+2024-03-25 11:53:16 DEBUG UpdateProducerImpl:21 - /test
+2024-03-25 11:55:36 DEBUG UpdateProducerImpl:21 - /start
+2024-03-25 11:55:40 DEBUG UpdateProducerImpl:21 - /help
+2024-03-25 11:55:43 DEBUG UpdateProducerImpl:21 - /weather

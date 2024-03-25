@@ -1,4 +1,4 @@
-package ru.conditer.service.impl;
+package ru.conditer.services.impl;
 
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,10 +6,9 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import ru.conditer.dao.AppUserDAO;
-import ru.conditer.dto.MailParams;
+import ru.conditer.utils.dto.MailParams;
 import ru.conditer.entity.AppUser;
-import ru.conditer.entity.enums.UserState;
-import ru.conditer.service.AppUserService;
+import ru.conditer.services.AppUserService;
 import ru.conditer.utils.CryptoTool;
 
 import javax.mail.internet.AddressException;

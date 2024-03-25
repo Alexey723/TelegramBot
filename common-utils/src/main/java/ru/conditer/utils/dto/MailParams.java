@@ -1,4 +1,4 @@
-package ru.conditer.dto;
+package ru.conditer.utils.dto;
 
 import lombok.*;
 

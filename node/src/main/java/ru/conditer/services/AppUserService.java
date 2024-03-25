@@ -1,4 +1,4 @@
-package ru.conditer.service;
+package ru.conditer.services;
 
 import ru.conditer.entity.AppUser;
 
